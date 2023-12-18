@@ -19,6 +19,10 @@ const UserSchema = new mongoose.Schema(
             type: Boolean,
             default: false
         },
+        appliedCourses: {
+            type: Array,
+            default: []
+        }
     },
     { timestamps: true }
 );

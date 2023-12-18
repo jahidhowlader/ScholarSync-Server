@@ -5,8 +5,8 @@ import cors from 'cors'
 // import cookieParser from 'cookie-parser'
 import authRoute from './api/routes/auth.js'
 import jwtRoute from './api/routes/jwt.js'
-// import usersRoute from './api/routes/users.js'
-// import roomsRoute from './api/routes/rooms.js'
+import usersRoute from './api/routes/users.js'
+import coursesRoute from './api/routes/courses.js'
 // import bookingsRoute from './api/routes/bookings.js'
 dotenv.config()
 
@@ -32,8 +32,9 @@ app.use(cors({ credentials: true, origin: ['https://travelnest-client.web.app', 
 // app.use(cookieParser())
 app.use(express.json());
 app.use("/api/auth", authRoute)
+app.use("/api/users", usersRoute)
 app.use("/api/jwt", jwtRoute)
-// app.use("/api", roomsRoute)
+app.use("/api/courses", coursesRoute)
 // app.use("/api", bookingsRoute)
 app.get('/', (req, res) => {
 

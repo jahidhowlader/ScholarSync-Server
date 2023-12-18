@@ -1,3 +1,7 @@
+import jwt from 'jsonwebtoken'
+import { createError } from './error.js';
+import User from '../models/User.js';
+
 export const verifyJWT = (req, res, next) => {
 
     const clientToken = req.headers.authorization;
@@ -15,4 +19,20 @@ export const verifyJWT = (req, res, next) => {
         req.user = email;
         next();
     })
+}
+
+export const verifyAdmin = (req, res, next) => {
+
+    verifyJWT(req, res, async () => {
+
+        const users = await User.findOne({ email: req?.user?.email })
+
+        if (users?.isAdmin) {
+            next();
+
+        } else {
+            return next(createError(403, "Restricted access!"));
+        }
+    });
+
 }

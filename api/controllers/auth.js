@@ -14,8 +14,6 @@ export const register = async (req, res, next) => {
     // GET DATA FROM CLIENT
     const { username, email, password } = req.body
 
-    console.log(req.body);
-
     // CHECK VALIDATION FOR USERNAME
     if (!username) {
       return next(createError(406, "Name Field is required!"));
