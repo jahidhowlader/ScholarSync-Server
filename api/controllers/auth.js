@@ -2,6 +2,7 @@ import User from "../models/User.js";
 import bcrypt from "bcrypt";
 import { createError } from "../utils/error.js";
 
+// USER CREATION
 export const register = async (req, res, next) => {
 
   try {
@@ -54,7 +55,7 @@ export const register = async (req, res, next) => {
   }
 };
 
-
+//  USER CREDENTIAL
 export const login = async (req, res, next) => {
 
   try {

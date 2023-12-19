@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken'
 import { createError } from './error.js';
 import User from '../models/User.js';
 
+// CHECK VERIFY USER AUTHENTICATION
 export const verifyJWT = (req, res, next) => {
 
     const clientToken = req.headers.authorization;
@@ -21,7 +22,7 @@ export const verifyJWT = (req, res, next) => {
     })
 }
 
-
+// CHECK VERIFY AUTHORIZATiON USER
 export const verifyUser = (req, res, next) => {
 
     verifyJWT(req, res, async () => {
@@ -38,6 +39,7 @@ export const verifyUser = (req, res, next) => {
 
 }
 
+// CHECK VERIFY AUTHORIZATiON ADMIN
 export const verifyAdmin = (req, res, next) => {
 
     verifyJWT(req, res, async () => {

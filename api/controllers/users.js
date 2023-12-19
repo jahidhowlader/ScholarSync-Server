@@ -1,6 +1,6 @@
 import User from "../models/User.js";
-import { createError } from "../utils/error.js";
 
+// ALL USER FOR ADMIN
 export const allUser = async (req, res, next) => {
 
   try {
@@ -14,7 +14,7 @@ export const allUser = async (req, res, next) => {
   }
 };
 
-// 
+// SINGLE USER
 export const singleUser = async (req, res, next) => {
 
   try {
@@ -27,21 +27,3 @@ export const singleUser = async (req, res, next) => {
     next(err);
   }
 };
-
-// UPDATE USER COLLECTION AFTER CLIENTS CLICK APPLY
-export const addCourseByClient = async (req, res, next) => {
-
-  try {
-
-    await User.updateOne(
-
-      { email: req.query.email },
-      { $push: { appliedCourses: req.query._id } }
-    )
-
-    res.status(201).json({ message: "Course has been added." });
-
-  } catch (err) {
-    next(err)
-  }
-}

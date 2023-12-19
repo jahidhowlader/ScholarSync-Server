@@ -1,5 +1,6 @@
 import Course from "../models/Course.js";
 
+// GET ALL COURSES
 export const allCourses = async (req, res, next) => {
 
     try {
@@ -13,6 +14,7 @@ export const allCourses = async (req, res, next) => {
     }
 };
 
+// ADD COURSE BY ADMIN
 export const addCourse = async (req, res, next) => {
 
     try {

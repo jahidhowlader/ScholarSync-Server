@@ -17,6 +17,7 @@ export const applyCourse = async (req, res, next) => {
 
 }
 
+// GET USER ADMISION LIST
 export const getApplyCourse = async (req, res, next) => {
 
     try {
@@ -31,6 +32,7 @@ export const getApplyCourse = async (req, res, next) => {
 
 }
 
+// GET ALL ADMISSION REQUEST FOR ADMIN
 export const getAllApplyCourse = async (req, res, next) => {
 
     try {
@@ -45,8 +47,7 @@ export const getAllApplyCourse = async (req, res, next) => {
 
 }
 
-
-
+// REJECT ADMISSION REQUEST
 export const rejectApplyCourse = async (req, res, next) => {
 
     try {
@@ -61,6 +62,7 @@ export const rejectApplyCourse = async (req, res, next) => {
 
 }
 
+// APRROVE ADMISSION REQUEST
 export const approveApplyCourse = async (req, res, next) => {
 
     try {

@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken'
 
+// POST ACCESS TOKEN WITH JWT
 export const createToken = async (req, res, next) => {
 
     try {
