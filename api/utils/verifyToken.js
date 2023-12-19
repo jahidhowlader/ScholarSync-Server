@@ -6,8 +6,6 @@ export const verifyJWT = (req, res, next) => {
 
     const clientToken = req.headers.authorization;
 
-    console.log(clientToken);
-
     if (!clientToken) {
         return next(createError(401, "You are not authenticated!"));
     }
@@ -21,6 +19,23 @@ export const verifyJWT = (req, res, next) => {
         req.user = email;
         next();
     })
+}
+
+
+export const verifyUser = (req, res, next) => {
+
+    verifyJWT(req, res, async () => {
+
+        const users = await User.findOne({ email: req?.user?.email })
+
+        if (req?.user?.email === req?.params?.email) {
+            next();
+
+        } else {
+            return next(createError(403, "Restricted access!"));
+        }
+    });
+
 }
 
 export const verifyAdmin = (req, res, next) => {

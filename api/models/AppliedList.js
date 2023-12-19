@@ -21,6 +21,10 @@ const AppliedListSchema = new mongoose.Schema(
         image: {
             type: String,
             required: true
+        },
+        status: {
+            type: String,
+            default: 'pending'
         }
     },
     { timestamps: true }

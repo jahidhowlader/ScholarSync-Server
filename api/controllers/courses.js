@@ -15,8 +15,6 @@ export const allCourses = async (req, res, next) => {
 
 export const addCourse = async (req, res, next) => {
 
-    console.log(req.body);
-
     try {
 
         // ADD NEW COURSE

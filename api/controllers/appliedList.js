@@ -2,7 +2,6 @@ import AppliedList from "../models/AppliedList.js";
 
 export const applyCourse = async (req, res, next) => {
 
-    console.log(req.body);
     try {
 
         // APPLY COURSE
@@ -24,7 +23,51 @@ export const getApplyCourse = async (req, res, next) => {
 
         const applyList = await AppliedList.find({ email: req.params.email })
 
-        res.send(applyList)
+        res.status(200).send(applyList)
+
+    } catch (err) {
+        next(err);
+    }
+
+}
+
+export const getAllApplyCourse = async (req, res, next) => {
+
+    try {
+
+        const allApplyList = await AppliedList.find({})
+
+        res.status(200).send(allApplyList)
+
+    } catch (err) {
+        next(err);
+    }
+
+}
+
+
+
+export const rejectApplyCourse = async (req, res, next) => {
+
+    try {
+
+        await AppliedList.findByIdAndDelete(req.params.id)
+
+        res.status(202).json({ message: "Application reject!" })
+
+    } catch (err) {
+        next(err);
+    }
+
+}
+
+export const approveApplyCourse = async (req, res, next) => {
+
+    try {
+
+        await AppliedList.findByIdAndUpdate(req.params.id, { status: 'approved' })
+
+        res.status(200).json({ message: "Application Approve!" })
 
     } catch (err) {
         next(err);
