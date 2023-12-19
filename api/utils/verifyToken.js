@@ -6,6 +6,8 @@ export const verifyJWT = (req, res, next) => {
 
     const clientToken = req.headers.authorization;
 
+    console.log(clientToken);
+
     if (!clientToken) {
         return next(createError(401, "You are not authenticated!"));
     }

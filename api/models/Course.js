@@ -13,10 +13,6 @@ const CourseSchema = new mongoose.Schema(
         image: {
             type: String,
             required: true
-        },
-        totalStudents: {
-            type: Number,
-            default: 0
         }
     },
     { timestamps: true }

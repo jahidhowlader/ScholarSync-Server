@@ -1,9 +1,7 @@
 import User from "../models/User.js";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 import { createError } from "../utils/error.js";
 
-// TODO: ADD JWT TOKEN WHEN USER WILL REGISTER
 export const register = async (req, res, next) => {
 
   try {

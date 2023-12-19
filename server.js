@@ -2,12 +2,11 @@ import express from "express";
 import dotenv from 'dotenv'
 import mongoose from "mongoose";
 import cors from 'cors'
-// import cookieParser from 'cookie-parser'
 import authRoute from './api/routes/auth.js'
 import jwtRoute from './api/routes/jwt.js'
 import usersRoute from './api/routes/users.js'
 import coursesRoute from './api/routes/courses.js'
-// import bookingsRoute from './api/routes/bookings.js'
+import appliedListRoute from './api/routes/appliedList.js'
 dotenv.config()
 
 const port = process.env.PORT || 3000
@@ -35,7 +34,7 @@ app.use("/api/auth", authRoute)
 app.use("/api/users", usersRoute)
 app.use("/api/jwt", jwtRoute)
 app.use("/api/courses", coursesRoute)
-// app.use("/api", bookingsRoute)
+app.use("/api/appliedList", appliedListRoute)
 app.get('/', (req, res) => {
 
     res.send("Hello World")
