@@ -82,7 +82,7 @@ export const login = async (req, res, next) => {
 
     // GOT USER FROM MongoDB AND RETURN
     const { password, isAdmin, ...otherDetails } = user._doc;
-    
+
     res.status(200)
       .json({ details: { ...otherDetails }, isAdmin });
 
@@ -90,3 +90,39 @@ export const login = async (req, res, next) => {
     next(err);
   }
 };
+
+// google Signin
+export const googleSignin = async (req, res, next) => {
+
+  console.log(req.body);
+
+  try {
+
+    const checkUser = await User.findOne({ email: req.body.email })
+
+    if (checkUser) {
+
+      return res.status(200).json({ message: "Successfully Login" });
+
+    } else {
+
+
+      // CREATE NEW USER IF ALL VALIDATION ARE SUCCESSFULL
+      const newUser = new User({
+        ...req.body,
+        password: '$2b$10$0RFCl8ji4RX/B9MBIsSCTOAJxcLVXSGzuUVV/YqDe3bbns66e2Me2'
+      });
+
+      console.log(newUser);
+
+      // SAVE USER IN MongoDB AND RETURN
+      await newUser.save();
+      res.status(201).json({ message: "User has been created." });
+
+    }
+
+  } catch (err) {
+    next(err);
+
+  }
+}
